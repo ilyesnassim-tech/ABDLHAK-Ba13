@@ -11,7 +11,7 @@
         /* ========================================= */
 
         :root {
-            /* Couleurs principales (Inspirées par l'image géométrique) */
+            /* Couleurs principales */
             --color-beige: #DDB892; 
             --color-black: #1A1A1A; 
             --color-gold: #AA7741; 
@@ -441,28 +441,28 @@
 
     <section class="slider-section" id="accueil">
         <div class="slider-container" id="sliderContainer">
-            <div class="slide" style="background-image: url('slide1.jpg')">
+            <div class="slide" style="background-image: url('plafond_principal.jpg')">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <h2>Designs Uniques en BA13</h2>
                     <p>Plafonds avec motifs ornementés et éclairage intégré.</p>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('slide2.jpg')">
+            <div class="slide" style="background-image: url('plafond_rond.jpg')">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <h2>Aménagements Créatifs & Lumineux</h2>
                     <p>Structures décoratives en BA13, colonnes et plafonds ronds.</p>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('slide3.jpg')">
+            <div class="slide" style="background-image: url('bande_led.jpg')">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <h2>Éclairage LED Intégré & Moderne</h2>
                     <p>Jeux de lumière pour sublimer vos intérieurs.</p>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('slide4.jpg')">
+            <div class="slide" style="background-image: url('arc_design.jpg')">
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <h2>Arcs & Niches Décoratives</h2>
@@ -490,27 +490,27 @@
 
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="slide1.jpg" alt="Plafond BA13 design">
+                <img src="plafond_principal.jpg" alt="Plafond BA13 design">
                 <div class="project-info">Plafond BA13 Ornemental Moderne</div>
             </div>
             <div class="gallery-item">
-                <img src="slide2.jpg" alt="Motif géométrique BA13">
+                <img src="plafond_rond.jpg" alt="Motif géométrique BA13">
                 <div class="project-info">Structure BA13 Ronde & Lumineuse</div>
             </div>
             <div class="gallery-item">
-                <img src="slide3.jpg" alt="Éclairage LED intégré au plafond">
+                <img src="bande_led.jpg" alt="Éclairage LED intégré au plafond">
                 <div class="project-info">Plafond Décoratif avec LED Colorées</div>
             </div>
             <div class="gallery-item">
-                <img src="slide4.jpg" alt="Arc design en BA13">
+                <img src="arc_design.jpg" alt="Arc design en BA13">
                 <div class="project-info">Arc Design et Éclairage Discret</div>
             </div>
             <div class="gallery-item">
-                <img src="projet5.jpg" alt="Plafond moderne avec suspensions">
+                <img src="suspensions.jpg" alt="Plafond moderne avec suspensions">
                 <div class="project-info">Plafond Suspendu avec Spots & Suspensions</div>
             </div>
             <div class="gallery-item">
-                <img src="projet6.jpg" alt="Éclairage linéaire BA13">
+                <img src="couloir_led.jpg" alt="Éclairage linéaire BA13">
                 <div class="project-info">Éclairage Linéaire Design (Couloir)</div>
             </div>
         </div>
@@ -565,7 +565,6 @@
             icon.classList.toggle('fa-times');
         });
 
-        // Fermer le menu lors du clic sur un lien (en mode mobile)
         document.querySelectorAll('.nav-menu a').forEach(item => {
             item.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
@@ -578,7 +577,7 @@
         });
 
 
-        // 2. Gestion du SLIDER
+        // 2. Gestion du SLIDER (Carrousel)
         const sliderContainer = document.getElementById('sliderContainer');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -587,19 +586,16 @@
         let currentIndex = 0;
         let autoSlideInterval;
 
-        // Fonction pour mettre à jour la position du slider
         function updateSlider() {
             const offset = -currentIndex * 100;
             sliderContainer.style.transform = `translateX(${offset}%)`;
         }
 
-        // Fonction pour passer à la slide suivante
         function nextSlide() {
             currentIndex = (currentIndex + 1) % totalSlides;
             updateSlider();
         }
 
-        // Fonction pour passer à la slide précédente
         function prevSlide() {
             currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
             updateSlider();
@@ -607,7 +603,7 @@
 
         // Démarrer le défilement automatique
         function startAutoSlide() {
-            autoSlideInterval = setInterval(nextSlide, 5000); 
+            autoSlideInterval = setInterval(nextSlide, 5000); // Change de slide toutes les 5 secondes
         }
 
         // Arrêter le défilement automatique
@@ -615,7 +611,6 @@
             clearInterval(autoSlideInterval);
         }
 
-        // Écouteurs d'événements pour les boutons
         nextBtn.addEventListener('click', () => {
             stopAutoSlide();
             nextSlide();
@@ -628,10 +623,8 @@
             startAutoSlide();
         });
 
-        // Démarrer l'auto-défilement au chargement
         document.addEventListener('DOMContentLoaded', startAutoSlide);
 
-        // Arrêter/Redémarrer l'auto-défilement au survol (meilleure ergonomie)
         sliderContainer.addEventListener('mouseover', stopAutoSlide);
         sliderContainer.addEventListener('mouseleave', startAutoSlide);
 
